@@ -98,7 +98,7 @@ class pr002 {
 
 		b11 = 100;
 		b11 = (byte)(b11 * b11); // Необходимо привидение типа int к типу byte
-		System.out.println("i11 и b11: + i11 + " " + b11);	
+		System.out.println("i11 и b11:" + i11 + " " + b11);	
 	}
 
 
