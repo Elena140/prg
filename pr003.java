@@ -117,10 +117,15 @@ class pr003 {
 			System.out.println("i7 и j7: " + i7 + " " + j7);
 
 		int i8;
+		char ignore;
 		System.out.println("Для остановки цикла нажмите клавишу \"S\"");
-		for (i8 = 0; (char) System.in.read() != 'S'; i8++)
+		for (i8 = 0; (char) System.in.read() != 'S'; i8++) {
+			 do {
+                                ignore = (char) System.in.read();
+                        } while (ignore != '\n');
 			System.out.println("Интерация №" + i8);
-		
+		}
+			 
 		System.out.println("\n");
 		for (i8 = 0; i8 < 10;) {
 			System.out.println("Интерация №" + i8);
@@ -167,5 +172,15 @@ class pr003 {
 			}
 			System.out.println("2 в степени " + i9 + " равно " + result);
 		}
+
+		//Цикл do-while
+		System.out.println("\n");
+		do {
+			System.out.print("Нажмите клавишу, затем ENTER: ");
+			ch = (char) System.in.read();
+			do {
+				ignore = (char) System.in.read();
+			} while (ignore != '\n');
+		} while (ch != 'q');
 	}
 }
