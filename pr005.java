@@ -72,7 +72,7 @@ class Arrays {
 		System.out.println();
 		int [][] arr2D = new int [10][20];
 		int t2, i2;
-		for(t2=0; t2<30; t2++) {
+		for(t2=0; t2<10; t2++) {
 			for(i2=10; i2<30; i2++) {
 				arr2D[t2][i2-10] = (t2*100) +i2 + 1;
 				if(t2 == 0)
@@ -197,8 +197,15 @@ class Arrays {
                 	//Эксперименты со ссылочными переменными str2 и str3
                 	str3 = str2;
                 	System.out.println(str3 + " " + str2);
-                	str2 = "Новая строка 2";
+			if (str3 == str2)
+				System.out.println("Ссылки указывают на один и тот же объект");
+                	str2 = "Новая строка 2, строка взамен str2 ";
                 	System.out.println(str3 + " " + str2);
+			if (str3 == str2)
+				System.out.println("Ссылки указывают на один и тот же объект");
+			else
+				System.out.println("Ссылки указывают на разные объекты");
+
                 	//Методы, выполняемые для строковых объектов
                 	//Методы сравнения строк
                 	System.out.println();
@@ -210,11 +217,95 @@ class Arrays {
                         	System.out.println("Строки str3 и str4 равны");
                 	else
                         	System.out.println("Строки str3 и str4 не равны");
+			//Использование оператора сравнения для проверки равенства ссылок str1 и str2
+			if(str1==str2)
+				System.out.println();
 
-                	int result;
+			int result;
                 	result = str1.compareTo(str3);
                 	System.out.println("Результат сравнения строк: " + result);
+			//определение длины строки
+			System.out.println("Длина строки str1: " + str1.length());
 
+			//Возврат символа в строке по номеру индекса
+			System.out.println("Первый символ в строке str1: " + str1.charAt(0) + "\n" + ((int)str1.charAt(1)));
+			char ch;
+			for (int i3 = 0; i3 < str1.length(); i3++)
+				System.out.print(str1.charAt(i3));
+			System.out.println();
+
+			//Возврат индекса, с которого начинается подстрока
+			System.out.println("Первое вхождение подстроки \"рок\" в str2: " + str2.indexOf("рок"));
+
+			System.out.println("Первое вхождение подстроки \"рок\" в str2: " + str2.lastIndexOf("рок"));
+
+			//Массивы строк
+			//
+			System.out.println();
+			String[] strs = {"Элементы","строкового","массива","для","примера"};
+			System.out.println("Исходный массив: ");
+			for (String s : strs)
+				System.out.print(s + " ");
+			System.out.println("\n");
+
+			strs[1] = "измененного строкового";
+			strs[3] = "Для еще одного";
+
+			System.out.println("Измененный массив: ");
+			for (String s : strs)
+                                System.out.print(" " + s);
+                        System.out.println("\n");
+
+			//Использование подстрок
+			str2 = ""; 
+			for (String s : strs)
+				str2 += " " + s;
+			System.out.println("Строка str2: " + str2);
+			String substr = str2.substring(10, 33);
+			System.out.println("Строка str2: " + str2 + "\nПодстрока substr: " + substr);
+
+			//Оператор switch, управляемый строками
+			//
+			String command = "disconnect";
+			switch(command) {
+				case "connect":
+					System.out.println("Подключение");
+					break;
+				case "cancel":
+					System.out.println("Отмена");
+                                        break;
+				case "disconnect":
+                                        System.out.println("Отключение");
+                                        break;
+				default:
+                                        System.out.println("Неверная команда");
+                                        break;
+			}
+			//Текстовые блоки
+			String str5 = """
+				Neque porro quisquam est
+			       	qui dolorem ipsum quia dolor sit amet, 
+				    consectetur, adipisci velit
+			Еще один текст
+			Sed ut perspiciatis unde omnis iste
+		       	natus error sit voluptatem accusantium
+		       	doloremque laudantium, totam 
+			rem aperiam, eaque ipsa quae ab illo inventore veritatis
+
+				""";
+			System.out.println("Текстовый блок str5: " + str5);
+
+			//Аргументы командной строки
+			//
+			System.out.println("""
+					1
+					2
+					3
+					""");
+			System.out.println("Программе передано " + args.length + " аргументов");
+			System.out.println("Список аргументов: ");
+			for (String s : args)
+				System.out.println(s);
 
 	}
 }
