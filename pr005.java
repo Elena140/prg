@@ -42,6 +42,118 @@ class Arrays {
                         if (sample2[i] > max) max = sample2[i];
  		}
                 System.out.println("Минимальное и максимальное значения: " + min + " " + max);
+		
+		//Пузырьковая сортировка
+		System.out.println();
+		int size = sample1.length;
+		int a, b, t;
+		//Отображение исходного массива
+		System.out.print("Исходный массив");
+		for(i=0; i < size; i++)
+			 System.out.print(" " + sample1[i]);
+		System.out.println();
+
+		//Собственно сортировка
+		for(a=1; a < size; a++)
+			for(b=size-1; b>= a; b--) {
+				if (sample1[b-1]>sample1[b]) {
+					t = sample1[b-1];
+					sample1[b-1] = sample1[b];
+					sample[b] = t;
+	}
+}
+		//Отображение отсортированного массива
+		System.out.print("Отсортированный массив");
+		for(i=0; i < size; i++)
+			System.out.print(" " + sample1[i]);
+		System.out.println();
+
+		//Двумерные массивы
+		System.out.println();
+		int [][] arr2D = new int [10][20];
+		int t2, i2;
+		for(t2=0; t2<30; t2++) {
+			for(i2=10; i2<30; i2++) {
+				arr2D[t2][i2-10] = (t2*100) +i2 + 1;
+				if(t2 == 0)
+					System.out.print(arr2D[t2][i2-10] + " ");
+				else
+					System.out.print(arr2D[t2][i2-10] + " ");
+			}
+			System.out.println();
+
+			}
+
+			//ДВумерный массив с разным количеством элементов в строке
+			System.out.println();
+
+			int[][] riders = new int[7][];
+			riders[0] = new int[10];
+			riders[1] = new int[10];
+			riders[2] = new int[10];
+			riders[3] = new int[10];
+			riders[4] = new int[10];
+			riders[5] = new int[2];
+			riders[6] = new int[2];
+
+			for(int i3=0; i3<7; i3++)
+				for(int j3=0; j3<riders[i3].length; j3++)
+					riders[i3][j3] = i3 + j3 + 10;
+
+			 System.out.println("Количество пассажиров в рабочие дни недели");
+
+			  for(int i3=0; i3<5; i3++) {
+				  for(int j3=0; j3<riders[i3].length; j3++)
+					  System.out.print(riders[i3][j3] + " ");
+				  System.out.println();
+			 }
+
+
+			System.out.println();
+			System.out.println("Количество пассажиров в рабочие дни недели");
+				
+			  for(int i3=5; i3<7; i3++) {
+				  for(int j3=0; j3<2; j3++)
+					  System.out.print(riders[i3][j3] + " ");
+				  System.out.println();
+			}
+			//Ссылки на массивы
+			System.out.println();
+			for(int i3=0; i3<10; i3++)
+				sample[i3] = i3;
+			for(int i3=0; i3<10; i3++)
+				sample[i3] = -i3;
+			System.out.println("Массив sample[]: ");
+			for(int i3=0; i3<10; i3++)
+				System.out.print(sample[i3]+ " ");
+			System.out.println();
+			System.out.println("Массив sample[]: ");
+			for(int i3=0; i3<10; i3++)
+				System.out.print(sample[i3]+ " ");
+			System.out.println();
+			sample1 = sample;
+			sample1[4] = 1111;
+			System.out.println("Массив sample[] после изменения элемената с индексом 4 в sample[4]: ");
+			for(int i3=0; i3<10; i3++)
+				 System.out.print(sample[i3]+ " ");
+			System.out.println();
+			System.out.print("sample[]: " + sample + " sample[]: " + sample1);
+
+
+			//Копирование массива
+			System.out.println();
+			int[] sample3 = new int[10];
+			for(int i3=0; i3<10; i3++)
+				sample[i3] = -i3;
+			if(sample.length >= sample3.length)
+				for( int i3=0; i3<sample3.length; i3++)
+				sample1[i3] = sample3[i3];
+
+			//Вывод содержимого sample1 после копирование
+			System.out.println("Массив sample[] после копирования: ");
+			for( int i3=0; i3<sample1.length; i3++)
+				System.out.println(sample1[i3]+ " ");
+			System.out.println();
 
 
 	}
