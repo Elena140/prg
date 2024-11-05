@@ -101,7 +101,7 @@ class ErrorMsg {
 
 //Возврат объекта, определенного в программе
 class Err {
- String msg; //сообщение об ошибке
+ 	String msg; //сообщение об ошибке
  	int severity; //уровень серьезности ошибки
  	Err(String m, int s) {
   		msg = m;
@@ -125,35 +125,59 @@ class ErrorInfo {
 }
 //Перегрузка методов
 class Overload {
-
+	void ovlDemo() {
+		System.out.println("Без параметров");
+	}
+	void ovlDemo(int a15) {
+		System.out.println("Один параметр типа int: " + a15);
+	}
+	int ovlDemo(int a15, int b15) {
+		System.out.println("Два параметра типа int: " + a15 + " " + b15);
+		return a15-b15;
+	int ovlDemo(double a15, double b15) {
+                System.out.println("Два параметра типа double: " + a15 + " " + b15);
+                return a15-b15;
+	}
+}
+//Влияние автопреобразования типов на перегрузку методов
+class Overload2 {
+	void f(int x) {
+		System.out.println("Внутри f(int): " + x);
+	}
+	void f(double x) {
+		System.out.println("Внутри f(double): " + x);
+	void f(byte x) {
+                System.out.println("Внутри f(byte): " + x);
+	}
+}
 class pr007 {
  	public static void main(String[] args) {
   		Mod ob = new Mod();
   		//Изменение и просмотр закрытой переменной осуществляется через методы, заданные внутри класса Mod
-  ob.setAlpha(77);
-  System.out.println("Значение ob.alpha: " + ob.getAlpha());
+  		ob.setAlpha(77);
+  		System.out.println("Значение ob.alpha: " + ob.getAlpha());
 
-  //Прямой доступ к переменной запрещен: ob.alpha = 100;
-  ob.beta = 242;
-  ob.gamma = 34;
+		//Прямой доступ к переменной запрещен: ob.alpha = 100;
+  		ob.beta = 242;
+  		ob.gamma = 34;
   
-  //Пример использования класса отказоустойчивого поведения массива
-  System.out.println();
-  FailSoftArray fs = new FailSoftArray(5, -999);
-  int x;
+ 		//Пример использования класса отказоустойчивого поведения массива
+  		System.out.println();
+  		FailSoftArray fs = new FailSoftArray(5, -999);
+  		int x;
 
-  //Пример работы класса без вывода сообщений о неправильных индексах
+  		//Пример работы класса без вывода сообщений о неправильных индексах
 
-  System.out.println("Скрытая от пользователя обработка ошибок:");
-  for(int i=0; i<(fs.length * 2); i++)
-   fs.put(i, i*10);
-  for(int i=0; i<(fs.length * 2); i++) {
-   x = fs.get(i);
-   if(x != -999) System.out.print(x + " ");
-  }
-  System.out.println();
+  		System.out.println("Скрытая от пользователя обработка ошибок:");
+  		for(int i=0; i<(fs.length * 2); i++)
+   			fs.put(i, i*10);
+  		for(int i=0; i<(fs.length * 2); i++) {
+   			x = fs.get(i);
+   		if(x != -999) System.out.print(x + " ");
+  		}
+  		System.out.println();
 
-  //Пример работы класса с выводом сообщений об ошибках
+  		//Пример работы класса с выводом сообщений об ошибках
   
   for(int i=0; i<(fs.length * 2); i++)
    if(!fs.put(i, i*10))
@@ -209,5 +233,37 @@ class pr007 {
   		System.out.println(e.msg + ", уровень серьезности: " + e.severity);
  		e = err2.getErrorInfo(20);
   		System.out.println(e.msg + ", уровень серьезности: " + e.severity);
+
+		System.out.println();
+
+		//Демонстрация перезагрузки методов (overload)
+		Overload ob7 = new Overload();
+		intresI;
+		double resd;
+
+		ob7.ovlDemo();
+		System.out.println();
+		ob7.ovlDemo(2);
+		System.out.println();
+		resI = ob7ovlDemo(4, 6);
+		System.out.println("результат вызова ob7.ovelDemo(4, 6): " + resI);
+		System.out.println();
+		resD = ob7.ovlDemo(5.1, 3.5);
+		System.out.println("результат вызова ob7.ovelDemo(5.1, 3.5): " + resD);
+		System.out.println();
+
+		//Перегрузка с автообразованием типов
+		Overload2 ob8 = new Overload2();
+		int i18=10;
+		double d18 = 10.1;
+		byte b18 = 99;
+		short s18 = 10;
+		float f18 = 11.5F;
+		ob.f(i18);
+		ob.f(d18);
+		ob.f(b18);
+		ob.f(s18);
+		ob.f(f18);
+
 	}
 }
